@@ -10,7 +10,7 @@ exports.login = (req, res) => {
       return res.status(500).json({ error: 'An error occurred' });
     }
 
-    return res.json({ userid: userId });
+    return res.json({ userId: userId.userid.toString() });
   });
 };
 
@@ -24,15 +24,15 @@ exports.getUsername = (req, res) => {
       return res.status(500).json({ error: 'An error occurred' });
     }
 
-    return res.json({ username });
+    return res.json({ username: username.username.toString() });
   });
 };
 
 // POST GetSettings
 exports.getSettings = (req, res) => {
-  const { userid } = req.body;
+  const { userId } = req.body;
 
-  User.getSettings(userid, (err, settings) => {
+  User.getSettings(userId, (err, settings) => {
     if (err) {
       console.error(err);
       return res.status(500).json({ error: 'An error occurred' });
@@ -44,14 +44,14 @@ exports.getSettings = (req, res) => {
 
 // PUT PutSettings
 exports.putSettings = (req, res) => {
-  const { userid, username, email, phone, password } = req.body;
+  const { userId, username, email, phone, password } = req.body;
 
-  User.putSettings(userid, username, email, phone, password, (err) => {
+  User.putSettings(userId, username, email, phone, password, (err) => {
     if (err) {
       console.error(err);
       return res.status(500).json({ error: 'An error occurred' });
     }
 
-    return res.json({ userid });
+    return res.json({ userid: userid.toString() });
   });
 };

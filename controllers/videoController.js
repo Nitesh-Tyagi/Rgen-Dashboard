@@ -2,9 +2,9 @@ const Video = require('../models/Video');
 
 // POST GetVideos
 exports.getVideos = (req, res) => {
-  const { userid } = req.body;
+  const { userId } = req.body;
 
-  Video.getVideos(userid, (err, videos) => {
+  Video.getVideos(userId, (err, videos) => {
     if (err) {
       console.error(err);
       return res.status(500).json({ error: 'An error occurred' });
@@ -16,9 +16,9 @@ exports.getVideos = (req, res) => {
 
 // POST GetVideo
 exports.getVideo = (req, res) => {
-  const { userid, id } = req.body;
+  const { userId, id } = req.body;
 
-  Video.getVideo(userid, id, (err, video) => {
+  Video.getVideo(userId, id, (err, video) => {
     if (err) {
       console.error(err);
       return res.status(500).json({ error: 'An error occurred' });
@@ -30,9 +30,9 @@ exports.getVideo = (req, res) => {
 
 // POST DownloadVideo
 exports.downloadVideo = (req, res) => {
-  const { userid, id } = req.body;
+  const { userId, id } = req.body;
 
-  Video.downloadVideo(userid, id, (err, link) => {
+  Video.downloadVideo(userId, id, (err, link) => {
     if (err) {
       console.error(err);
       return res.status(500).json({ error: 'An error occurred' });
