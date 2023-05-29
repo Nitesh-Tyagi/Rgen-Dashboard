@@ -10,7 +10,7 @@ const pool = mysql.createPool({
 
 // GetVideos API
 function getVideos(userid, result) {
-  const query = 'SELECT id, videoname FROM Video WHERE userid = ?';
+  const query = 'SELECT id, videoname, input FROM Video WHERE userid = ?';
   pool.query(query, [userid], (error, results) => {
     if (error) {
       result(error, null);
@@ -22,7 +22,7 @@ function getVideos(userid, result) {
 
 // GetVideo API
 function getVideo(userid, videoid, result) {
-  const query = 'SELECT videoname, length, input FROM Video WHERE id = ? AND userid = ?';
+  const query = 'SELECT * FROM Video WHERE id = ? AND userid = ?';
   pool.query(query, [videoid, userid], (error, results) => {
     if (error) {
       result(error, null);
