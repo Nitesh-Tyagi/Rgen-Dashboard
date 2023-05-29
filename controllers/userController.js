@@ -10,15 +10,15 @@ exports.login = (req, res) => {
       return res.status(500).json({ error: 'An error occurred' });
     }
 
-    return res.json({ userId: userId.userid.toString() });
+    return res.json({ userId: userId.userId.toString() });
   });
 };
 
 // POST GetUsername
 exports.getUsername = (req, res) => {
-  const { userid } = req.body;
+  const { userId } = req.body;
 
-  User.getUsername(userid, (err, username) => {
+  User.getUsername(userId, (err, username) => {
     if (err) {
       console.error(err);
       return res.status(500).json({ error: 'An error occurred' });
@@ -52,6 +52,6 @@ exports.putSettings = (req, res) => {
       return res.status(500).json({ error: 'An error occurred' });
     }
 
-    return res.json({ userid: userid.toString() });
+    return res.json({ userId: userId.toString() });
   });
 };

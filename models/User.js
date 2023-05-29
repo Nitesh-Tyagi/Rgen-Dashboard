@@ -16,15 +16,15 @@ function login(email, password, callback) {
       callback(error, null);
     } else {
       const userId = results.length > 0 ? results[0].id : 0;
-      callback(null, { userid: userId });
+      callback(null, { userId: userId });
     }
   });
 }
 
 // GetUsername API
-function getUsername(userid, callback) {
+function getUsername(userId, callback) {
   const query = 'SELECT username FROM User WHERE id = ?';
-  pool.query(query, [userid], (error, results) => {
+  pool.query(query, [userId], (error, results) => {
     if (error) {
       callback(error, null);
     } else {
@@ -35,9 +35,9 @@ function getUsername(userid, callback) {
 }
 
 // GetSettings API
-function getSettings(userid, callback) {
+function getSettings(userId, callback) {
   const query = 'SELECT username, email, phone, password FROM User WHERE id = ?';
-  pool.query(query, [userid], (error, results) => {
+  pool.query(query, [userId], (error, results) => {
     if (error) {
       callback(error, null);
     } else {
@@ -48,13 +48,13 @@ function getSettings(userid, callback) {
 }
 
 // PutSettings API
-function putSettings(userid, username, email, phone, password, callback) {
+function putSettings(userId, username, email, phone, password, callback) {
   const query = 'UPDATE User SET username = ?, email = ?, phone = ?, password = ? WHERE id = ?';
-  pool.query(query, [username, email, phone, password, userid], (error, results) => {
+  pool.query(query, [username, email, phone, password, userId], (error, results) => {
     if (error) {
       callback(error, null);
     } else {
-      callback(null, { userid: userid });
+      callback(null, { userId: userId });
     }
   });
 }
