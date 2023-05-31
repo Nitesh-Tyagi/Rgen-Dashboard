@@ -52,6 +52,6 @@ exports.putSettings = (req, res) => {
       return res.status(500).json({ error: 'An error occurred' });
     }
 
-    return res.json({ userId: userId.toString() });
+    return res.json({ userId });
   });
 };
