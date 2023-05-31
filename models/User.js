@@ -36,7 +36,7 @@ function getUsername(userId, callback) {
 
 // GetSettings API
 function getSettings(userId, callback) {
-  const query = 'SELECT username, email, phone, password FROM User WHERE id = ?';
+  const query = 'SELECT * FROM User WHERE id = ?';
   pool.query(query, [userId], (error, results) => {
     if (error) {
       callback(error, null);

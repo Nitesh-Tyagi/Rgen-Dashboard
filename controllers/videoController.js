@@ -38,7 +38,7 @@ exports.downloadVideo = (req, res) => {
       return res.status(500).json({ error: 'An error occurred' });
     }
 
-    return res.json({ link });
+    return res.json({ link: link.link.toString() });
   });
 };
 
